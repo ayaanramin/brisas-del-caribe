@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Star, Phone, MapPin, Clock } from 'lucide-react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import { WaveDividerTop, WaveDividerBottom, DoubleWaveDivider, TropicalPattern, CoralPattern } from '@/components/CaribbeanDivider';
 
 export default function Home() {
   const [hoveredDish, setHoveredDish] = useState<number | null>(null);
@@ -106,10 +107,12 @@ export default function Home() {
       </section>
 
       {/* Featured Dishes */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="container">
+      <section className="relative py-16 md:py-24 bg-white">
+        <WaveDividerTop color="primary" height={60} />
+        <TropicalPattern />
+        <div className="container relative z-10">
           <div className="text-center mb-12">
-            <p className="tagline text-primary mb-2">Our Specialties</p>
+            <p className="tagline text-secondary mb-2">Our Specialties</p>
             <h2 className="text-4xl md:text-5xl font-bold display-text text-foreground mb-4">
               Featured Dishes
             </h2>
@@ -162,10 +165,12 @@ export default function Home() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-16 md:py-24 bg-muted/30">
-        <div className="container">
+      <section className="relative py-16 md:py-24 bg-muted/30">
+        <WaveDividerBottom color="secondary" height={60} />
+        <CoralPattern />
+        <div className="container relative z-10">
           <div className="text-center mb-12">
-            <p className="tagline text-primary mb-2">What Our Customers Say</p>
+            <p className="tagline text-secondary mb-2">What Our Customers Say</p>
             <h2 className="text-4xl md:text-5xl font-bold display-text text-foreground">
               Love from Castle Hill
             </h2>
@@ -192,12 +197,14 @@ export default function Home() {
       </section>
 
       {/* Quick Info */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="container">
+      <section className="relative py-16 md:py-24 bg-white">
+        <WaveDividerTop color="secondary" height={60} />
+        <TropicalPattern />
+        <div className="container relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Hours */}
             <div className="text-center">
-              <Clock className="w-12 h-12 text-primary mx-auto mb-4" />
+              <Clock className="w-12 h-12 text-secondary mx-auto mb-4" />
               <h3 className="text-2xl font-bold display-text text-foreground mb-4">Hours</h3>
               <div className="text-foreground/70 space-y-1">
                 <p>Monday - Sunday</p>
@@ -207,7 +214,7 @@ export default function Home() {
 
             {/* Location */}
             <div className="text-center">
-              <MapPin className="w-12 h-12 text-primary mx-auto mb-4" />
+              <MapPin className="w-12 h-12 text-secondary mx-auto mb-4" />
               <h3 className="text-2xl font-bold display-text text-foreground mb-4">Location</h3>
               <p className="text-foreground/70">
                 1207 Castle Hill Ave<br />
@@ -225,7 +232,7 @@ export default function Home() {
 
             {/* Contact */}
             <div className="text-center">
-              <Phone className="w-12 h-12 text-primary mx-auto mb-4" />
+              <Phone className="w-12 h-12 text-secondary mx-auto mb-4" />
               <h3 className="text-2xl font-bold display-text text-foreground mb-4">Contact</h3>
               <a href="tel:+17187949710" className="text-primary hover:underline font-bold text-lg">
                 (718) 794-9710
@@ -241,8 +248,9 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 md:py-24 bg-primary text-white">
-        <div className="container text-center">
+      <section className="relative py-16 md:py-24 bg-primary text-white">
+        <WaveDividerTop color="secondary" height={60} />
+        <div className="container relative z-10 text-center">
           <h2 className="text-4xl md:text-5xl font-bold display-text mb-6">
             Ready to Experience Authentic Dominican Flavor?
           </h2>

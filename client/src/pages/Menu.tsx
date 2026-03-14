@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Search } from 'lucide-react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import { WaveDividerTop, WaveDividerBottom, TropicalPattern } from '@/components/CaribbeanDivider';
 
 interface MenuItem {
   id: string;
@@ -160,8 +161,10 @@ export default function Menu() {
       </section>
 
       {/* Menu Content */}
-      <section className="py-16 md:py-24 bg-white flex-1">
-        <div className="container">
+      <section className="relative py-16 md:py-24 bg-white flex-1">
+        <WaveDividerTop color="primary" height={60} />
+        <TropicalPattern />
+        <div className="container relative z-10">
           {/* Search Bar */}
           <div className="mb-12">
             <div className="relative max-w-md mx-auto">
@@ -185,7 +188,7 @@ export default function Menu() {
                   setSelectedCategory(category.id);
                   setSearchQuery('');
                 }}
-                className={`px-6 py-3 rounded-lg font-semibold transition-all ${
+                className={`px-6 py-3 rounded-lg font-bold transition-all ${
                   selectedCategory === category.id
                     ? 'bg-primary text-white shadow-md'
                     : 'bg-muted text-foreground hover:bg-muted/80'
