@@ -200,9 +200,8 @@ export default function Home() {
               <Clock className="w-12 h-12 text-primary mx-auto mb-4" />
               <h3 className="text-2xl font-bold display-text text-foreground mb-4">Hours</h3>
               <div className="text-foreground/70 space-y-1">
-                <p>Mon - Thu: 11am - 10pm</p>
-                <p>Fri - Sat: 11am - 11pm</p>
-                <p>Sunday: 12pm - 10pm</p>
+                <p>Monday - Sunday</p>
+                <p>9:00 AM - 10:00 PM</p>
               </div>
             </div>
 
@@ -211,11 +210,11 @@ export default function Home() {
               <MapPin className="w-12 h-12 text-primary mx-auto mb-4" />
               <h3 className="text-2xl font-bold display-text text-foreground mb-4">Location</h3>
               <p className="text-foreground/70">
-                2345 Westchester Ave<br />
+                1207 Castle Hill Ave<br />
                 Castle Hill, Bronx, NY 10462
               </p>
               <a
-                href="https://maps.google.com/?q=2345+Westchester+Ave+Bronx+NY+10462"
+                href="https://maps.google.com/?q=1207+Castle+Hill+Ave+Bronx+NY+10462"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-primary hover:underline text-sm mt-3 inline-block font-medium"
@@ -228,8 +227,8 @@ export default function Home() {
             <div className="text-center">
               <Phone className="w-12 h-12 text-primary mx-auto mb-4" />
               <h3 className="text-2xl font-bold display-text text-foreground mb-4">Contact</h3>
-              <a href="tel:+17185551234" className="text-primary hover:underline font-bold text-lg">
-                (718) 555-1234
+              <a href="tel:+17187949710" className="text-primary hover:underline font-bold text-lg">
+                (718) 794-9710
               </a>
               <p className="text-foreground/70 mt-2">
                 <a href="mailto:info@brisasdelcaribe.com" className="hover:text-primary transition-colors">

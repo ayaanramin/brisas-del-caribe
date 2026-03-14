@@ -28,11 +28,11 @@ export default function Footer() {
               Location
             </h4>
             <p className="text-gray-300">
-              2345 Westchester Ave<br />
+              1207 Castle Hill Ave<br />
               Castle Hill, Bronx, NY 10462
             </p>
             <a
-              href="https://maps.google.com/?q=2345+Westchester+Ave+Bronx+NY+10462"
+              href="https://maps.google.com/?q=1207+Castle+Hill+Ave+Bronx+NY+10462"
               target="_blank"
               rel="noopener noreferrer"
               className="text-accent hover:underline text-sm mt-2 inline-block"
@@ -48,9 +48,8 @@ export default function Footer() {
               Hours
             </h4>
             <div className="text-gray-300 text-sm space-y-1">
-              <p>Mon - Thu: 11am - 10pm</p>
-              <p>Fri - Sat: 11am - 11pm</p>
-              <p>Sunday: 12pm - 10pm</p>
+              <p>Monday - Sunday</p>
+              <p>9:00 AM - 10:00 PM</p>
             </div>
           </div>
 
@@ -62,8 +61,8 @@ export default function Footer() {
             </h4>
             <div className="text-gray-300 text-sm space-y-2">
               <p>
-                <a href="tel:+17185551234" className="hover:text-accent transition-colors">
-                  (718) 555-1234
+                <a href="tel:+17187949710" className="hover:text-accent transition-colors">
+                  (718) 794-9710
                 </a>
               </p>
               <p>

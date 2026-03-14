@@ -40,7 +40,7 @@ export default function Navigation() {
 
         {/* Desktop CTA Buttons */}
         <div className="hidden md:flex items-center gap-3">
-          <a href="tel:+17185551234">
+          <a href="tel:+17187949710">
             <Button variant="outline" size="sm" className="border-primary text-primary hover:bg-primary hover:text-white">
               <Phone className="w-4 h-4 mr-2" />
               Call Now
@@ -80,7 +80,7 @@ export default function Navigation() {
               </Link>
             ))}
             <div className="flex flex-col gap-2 pt-4 border-t border-border">
-              <a href="tel:+17185551234">
+              <a href="tel:+17187949710">
                 <Button variant="outline" className="w-full border-primary text-primary hover:bg-primary hover:text-white">
                   <Phone className="w-4 h-4 mr-2" />
                   Call Now

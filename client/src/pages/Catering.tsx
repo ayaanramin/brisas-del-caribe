@@ -291,9 +291,9 @@ export default function Catering() {
           <p className="text-xl mb-8 text-white/90 max-w-2xl mx-auto">
             Call us directly to discuss your catering needs and get a personalized quote.
           </p>
-          <a href="tel:+17185551234">
+          <a href="tel:+17187949710">
             <Button size="lg" className="bg-white hover:bg-gray-100 text-primary font-bold">
-              Call (718) 555-1234
+              Call (718) 794-9710
             </Button>
           </a>
         </div>

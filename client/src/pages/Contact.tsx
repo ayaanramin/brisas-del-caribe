@@ -69,11 +69,11 @@ export default function Contact() {
                       Address
                     </h3>
                     <p className="text-foreground/70">
-                      2345 Westchester Ave<br />
+                      1207 Castle Hill Ave<br />
                       Castle Hill, Bronx, NY 10462
                     </p>
                     <a
-                      href="https://maps.google.com/?q=2345+Westchester+Ave+Bronx+NY+10462"
+                      href="https://maps.google.com/?q=1207+Castle+Hill+Ave+Bronx+NY+10462"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-primary hover:underline text-sm mt-2 inline-block font-medium"
@@ -93,10 +93,10 @@ export default function Contact() {
                       Phone
                     </h3>
                     <a
-                      href="tel:+17185551234"
+                      href="tel:+17187949710"
                       className="text-primary hover:underline font-semibold text-lg"
                     >
-                      (718) 555-1234
+                      (718) 794-9710
                     </a>
                     <p className="text-foreground/70 text-sm mt-1">
                       Call for orders, reservations, or catering inquiries
@@ -132,9 +132,7 @@ export default function Contact() {
                       Hours
                     </h3>
                     <div className="text-foreground/70 text-sm space-y-1">
-                      <p><strong>Monday - Thursday:</strong> 11:00 AM - 10:00 PM</p>
-                      <p><strong>Friday - Saturday:</strong> 11:00 AM - 11:00 PM</p>
-                      <p><strong>Sunday:</strong> 12:00 PM - 10:00 PM</p>
+                      <p><strong>Monday - Sunday:</strong> 9:00 AM - 10:00 PM</p>
                     </div>
                   </div>
                 </div>
@@ -240,7 +238,7 @@ export default function Contact() {
               height="100%"
               frameBorder="0"
               title="Brisas del Caribe Location"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.5614286305057!2d-73.86892!3d40.8445!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2f5c5c5c5c5c5%3A0x5c5c5c5c5c5c5c5c!2s2345%20Westchester%20Ave%2C%20Bronx%2C%20NY%2010462!5e0!3m2!1sen!2sus!4v1234567890"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3024.8697!2d-73.8689!3d40.8445!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2f5c5c5c5c5c5%3A0x5c5c5c5c5c5c5c5c!2s1207%20Castle%20Hill%20Ave%2C%20Bronx%2C%20NY%2010462!5e0!3m2!1sen!2sus!4v1234567890"
               allowFullScreen={true}
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
@@ -258,7 +256,7 @@ export default function Contact() {
           <p className="text-xl mb-8 text-white/90 max-w-2xl mx-auto">
             Come experience authentic Dominican cuisine at Brisas del Caribe. We are located in Castle Hill, Bronx, and open 7 days a week.
           </p>
-          <a href="tel:+17185551234">
+          <a href="tel:+17187949710">
             <Button size="lg" className="bg-white hover:bg-gray-100 text-primary font-bold">
               Call Us Now
             </Button>
