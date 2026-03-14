@@ -162,7 +162,6 @@ export default function Menu() {
 
       {/* Menu Content */}
       <section className="relative py-16 md:py-24 bg-white flex-1">
-        <WaveDividerTop color="primary" height={60} />
         <TropicalPattern />
         <div className="container relative z-10">
           {/* Search Bar */}

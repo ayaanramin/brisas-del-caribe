@@ -108,7 +108,6 @@ export default function Home() {
 
       {/* Featured Dishes */}
       <section className="relative py-16 md:py-24 bg-white">
-        <WaveDividerTop color="primary" height={60} />
         <TropicalPattern />
         <div className="container relative z-10">
           <div className="text-center mb-12">
@@ -166,7 +165,6 @@ export default function Home() {
 
       {/* Testimonials */}
       <section className="relative py-16 md:py-24 bg-muted/30">
-        <WaveDividerBottom color="secondary" height={60} />
         <CoralPattern />
         <div className="container relative z-10">
           <div className="text-center mb-12">
@@ -198,7 +196,6 @@ export default function Home() {
 
       {/* Quick Info */}
       <section className="relative py-16 md:py-24 bg-white">
-        <WaveDividerTop color="secondary" height={60} />
         <TropicalPattern />
         <div className="container relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -249,7 +246,6 @@ export default function Home() {
 
       {/* CTA Section */}
       <section className="relative py-16 md:py-24 bg-primary text-white">
-        <WaveDividerTop color="secondary" height={60} />
         <div className="container relative z-10 text-center">
           <h2 className="text-4xl md:text-5xl font-bold display-text mb-6">
             Ready to Experience Authentic Dominican Flavor?
