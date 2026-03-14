@@ -62,42 +62,42 @@ export default function Home() {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="relative h-screen md:h-[600px] flex items-center overflow-hidden">
+      <section className="relative h-screen md:h-[600px] flex items-center overflow-hidden bg-gradient-to-r from-primary to-primary/80">
         <div className="absolute inset-0 z-0">
           <img
             src="https://d2xsxph8kpxj0f.cloudfront.net/310519663438048923/jHWfQquoZm8oJi86Fq679P/hero-mofongo-plate-fq9GMVszcRTP55fpL8H4J3.webp"
             alt="Mofongo"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/70 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/70 to-transparent"></div>
         </div>
 
         <div className="container relative z-10 py-12 md:py-0">
           <div className="max-w-2xl">
-            <p className="tagline text-accent mb-4 text-xl">Welcome to</p>
-            <h1 className="text-5xl md:text-6xl font-bold display-text text-foreground mb-4 leading-tight">
+            <p className="tagline text-secondary mb-4 text-2xl font-bold">Welcome to</p>
+            <h1 className="text-5xl md:text-7xl font-bold display-text text-white mb-4 leading-tight drop-shadow-lg">
               Brisas del Caribe
             </h1>
-            <p className="text-xl text-foreground/90 mb-6 font-medium">
+            <p className="text-xl text-white/95 mb-6 font-medium">
               Authentic Dominican Flavor in the Bronx
             </p>
-            <p className="text-lg text-foreground/80 mb-8 max-w-xl">
+            <p className="text-lg text-white/90 mb-8 max-w-xl">
               Family-owned restaurant serving Castle Hill with authentic Dominican cuisine, fresh ingredients, and warm hospitality since 2015.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href="/menu">
-                <Button size="lg" className="bg-primary hover:bg-primary/90 text-white w-full sm:w-auto">
+                <Button size="lg" className="bg-white hover:bg-gray-100 text-primary font-bold w-full sm:w-auto">
                   View Menu
                 </Button>
               </Link>
-              <Button size="lg" variant="outline" className="border-primary text-primary hover:bg-primary hover:text-white w-full sm:w-auto">
+              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-primary font-bold w-full sm:w-auto">
                 Order Online
               </Button>
-              <a href="tel:+17185551234" className="w-full sm:w-auto">
-                <Button size="lg" variant="outline" className="border-primary text-primary hover:bg-primary hover:text-white w-full">
+              <a href="tel:+17187949710" className="w-full sm:w-auto">
+                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-primary font-bold w-full">
                   <Phone className="w-5 h-5 mr-2" />
-                  Call Now
+                  Call (718) 794-9710
                 </Button>
               </a>
             </div>

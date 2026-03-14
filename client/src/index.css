@@ -43,75 +43,75 @@
 }
 
 :root {
-  /* Warm Caribbean Color Palette */
-  --primary: #C85A3A;
-  --primary-foreground: #F9F7F4;
-  --sidebar-primary: #C85A3A;
-  --sidebar-primary-foreground: #F9F7F4;
-  --chart-1: #2D7A5C;
-  --chart-2: #F08D4D;
-  --chart-3: #E8D4B8;
-  --chart-4: #3D2817;
-  --chart-5: #8B7D6B;
-  --radius: 0.65rem;
-  --background: #F9F7F4;
-  --foreground: #3D2817;
+  /* Vibrant Caribbean Storefront Colors */
+  --primary: #FFC107;
+  --primary-foreground: #1A1A1A;
+  --sidebar-primary: #17A697;
+  --sidebar-primary-foreground: #FFFFFF;
+  --chart-1: #17A697;
+  --chart-2: #FFC107;
+  --chart-3: #FF6B35;
+  --chart-4: #1A1A1A;
+  --chart-5: #FFFFFF;
+  --radius: 1rem;
+  --background: #FAFAF8;
+  --foreground: #1A1A1A;
   --card: #FFFFFF;
-  --card-foreground: #3D2817;
+  --card-foreground: #1A1A1A;
   --popover: #FFFFFF;
-  --popover-foreground: #3D2817;
-  --secondary: #2D7A5C;
-  --secondary-foreground: #F9F7F4;
-  --muted: #E8D4B8;
-  --muted-foreground: #8B7D6B;
-  --accent: #F08D4D;
+  --popover-foreground: #1A1A1A;
+  --secondary: #17A697;
+  --secondary-foreground: #FFFFFF;
+  --muted: #E8E8E6;
+  --muted-foreground: #666666;
+  --accent: #FF6B35;
   --accent-foreground: #FFFFFF;
   --destructive: #DC2626;
   --destructive-foreground: #FFFFFF;
-  --border: #E8D4B8;
+  --border: #E8E8E6;
   --input: #FFFFFF;
-  --ring: #C85A3A;
+  --ring: #FFC107;
   --sidebar: #FFFFFF;
-  --sidebar-foreground: #3D2817;
-  --sidebar-accent: #C85A3A;
+  --sidebar-foreground: #1A1A1A;
+  --sidebar-accent: #17A697;
   --sidebar-accent-foreground: #FFFFFF;
-  --sidebar-border: #E8D4B8;
-  --sidebar-ring: #C85A3A;
+  --sidebar-border: #E8E8E6;
+  --sidebar-ring: #FFC107;
 }
 
 .dark {
-  --primary: #C85A3A;
-  --primary-foreground: #F9F7F4;
-  --sidebar-primary: #C85A3A;
-  --sidebar-primary-foreground: #F9F7F4;
-  --background: #1A1410;
-  --foreground: #F9F7F4;
-  --card: #2A2218;
-  --card-foreground: #F9F7F4;
-  --popover: #2A2218;
-  --popover-foreground: #F9F7F4;
-  --secondary: #2D7A5C;
-  --secondary-foreground: #F9F7F4;
-  --muted: #3D2817;
-  --muted-foreground: #C4B5A0;
-  --accent: #F08D4D;
-  --accent-foreground: #1A1410;
+  --primary: #FFC107;
+  --primary-foreground: #1A1A1A;
+  --sidebar-primary: #17A697;
+  --sidebar-primary-foreground: #FFFFFF;
+  --background: #1A1A1A;
+  --foreground: #FFFFFF;
+  --card: #2A2A2A;
+  --card-foreground: #FFFFFF;
+  --popover: #2A2A2A;
+  --popover-foreground: #FFFFFF;
+  --secondary: #17A697;
+  --secondary-foreground: #FFFFFF;
+  --muted: #404040;
+  --muted-foreground: #CCCCCC;
+  --accent: #FF6B35;
+  --accent-foreground: #1A1A1A;
   --destructive: #DC2626;
   --destructive-foreground: #FFFFFF;
-  --border: #3D2817;
-  --input: #2A2218;
-  --ring: #F08D4D;
-  --chart-1: #2D7A5C;
-  --chart-2: #F08D4D;
-  --chart-3: #E8D4B8;
-  --chart-4: #C85A3A;
-  --chart-5: #8B7D6B;
-  --sidebar: #2A2218;
-  --sidebar-foreground: #F9F7F4;
-  --sidebar-accent: #C85A3A;
-  --sidebar-accent-foreground: #F9F7F4;
-  --sidebar-border: #3D2817;
-  --sidebar-ring: #F08D4D;
+  --border: #404040;
+  --input: #2A2A2A;
+  --ring: #FFC107;
+  --chart-1: #17A697;
+  --chart-2: #FFC107;
+  --chart-3: #FF6B35;
+  --chart-4: #FFC107;
+  --chart-5: #17A697;
+  --sidebar: #2A2A2A;
+  --sidebar-foreground: #FFFFFF;
+  --sidebar-accent: #17A697;
+  --sidebar-accent-foreground: #FFFFFF;
+  --sidebar-border: #404040;
+  --sidebar-ring: #FFC107;
 }
 
 @layer base {
@@ -119,39 +119,44 @@
     @apply border-border outline-ring/50;
   }
   html {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Poppins', sans-serif;
   }
   body {
     @apply bg-background text-foreground;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: 16px;
     line-height: 1.6;
   }
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Fredoka', sans-serif;
     font-weight: 700;
     line-height: 1.2;
+    letter-spacing: -0.5px;
   }
   h1 {
     font-size: 3rem;
     font-weight: 800;
+    font-family: 'Fredoka', sans-serif;
   }
   h2 {
     font-size: 2.25rem;
     font-weight: 700;
+    font-family: 'Fredoka', sans-serif;
   }
   h3 {
     font-size: 1.5rem;
     font-weight: 700;
+    font-family: 'Fredoka', sans-serif;
   }
   .tagline, .script-accent {
-    font-family: 'Caveat', cursive;
+    font-family: 'Comfortaa', cursive;
     font-size: 1.5rem;
     font-weight: 700;
   }
   .display-text {
-    font-family: 'Playfair Display', serif;
-    font-weight: 700;
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.5px;
   }
   button:not(:disabled),
   [role="button"]:not([aria-disabled="true"]),

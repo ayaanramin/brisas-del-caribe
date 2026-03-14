@@ -16,7 +16,7 @@ export default function Navigation() {
   ];
 
   return (
-    <nav className="sticky top-0 z-50 bg-white shadow-md">
+    <nav className="sticky top-0 z-50 bg-white shadow-lg border-b-4 border-primary">
       <div className="container flex items-center justify-between py-4">
         {/* Logo */}
         <Link href="/">
@@ -41,12 +41,12 @@ export default function Navigation() {
         {/* Desktop CTA Buttons */}
         <div className="hidden md:flex items-center gap-3">
           <a href="tel:+17187949710">
-            <Button variant="outline" size="sm" className="border-primary text-primary hover:bg-primary hover:text-white">
+            <Button variant="outline" size="sm" className="border-secondary text-secondary hover:bg-secondary hover:text-white font-bold">
               <Phone className="w-4 h-4 mr-2" />
               Call Now
             </Button>
           </a>
-          <Button size="sm" className="bg-primary hover:bg-primary/90 text-white">
+          <Button size="sm" className="bg-primary hover:bg-primary/80 text-foreground font-bold">
             Order Online
           </Button>
         </div>
@@ -81,12 +81,12 @@ export default function Navigation() {
             ))}
             <div className="flex flex-col gap-2 pt-4 border-t border-border">
               <a href="tel:+17187949710">
-                <Button variant="outline" className="w-full border-primary text-primary hover:bg-primary hover:text-white">
+                <Button variant="outline" className="w-full border-secondary text-secondary hover:bg-secondary hover:text-white font-bold">
                   <Phone className="w-4 h-4 mr-2" />
                   Call Now
                 </Button>
               </a>
-              <Button className="w-full bg-primary hover:bg-primary/90 text-white">
+              <Button className="w-full bg-primary hover:bg-primary/80 text-foreground font-bold">
                 Order Online
               </Button>
             </div>
