@@ -6,13 +6,21 @@ import { useState } from 'react';
 interface CartModalProps {
   isOpen: boolean;
   onClose: () => void;
+  onItemAdded?: () => void;
 }
 
-export function CartModal({ isOpen, onClose }: CartModalProps) {
+export function CartModal({ isOpen, onClose, onItemAdded }: CartModalProps) {
   const { items, removeItem, updateQuantity, clearCart, totalPrice, totalItems } = useCart();
   const [orderPlaced, setOrderPlaced] = useState(false);
+  const [showConfirmation, setShowConfirmation] = useState(false);
 
   if (!isOpen) return null;
+
+  const handleAddConfirmation = () => {
+    setShowConfirmation(true);
+    setTimeout(() => setShowConfirmation(false), 2000);
+    onItemAdded?.();
+  };
 
   const handlePlaceOrder = () => {
     if (items.length === 0) return;
@@ -32,7 +40,7 @@ export function CartModal({ isOpen, onClose }: CartModalProps) {
     setTimeout(() => {
       setOrderPlaced(false);
       onClose();
-    }, 2000);
+    }, 3000);
   };
 
   return (
@@ -112,6 +120,12 @@ export function CartModal({ isOpen, onClose }: CartModalProps) {
               </div>
 
               {/* Actions */}
+              {showConfirmation && (
+                <div className="bg-green-50 border border-green-200 rounded-lg p-3 text-center mb-4 animate-pulse">
+                  <p className="text-green-700 font-medium text-sm">✓ Added to order!</p>
+                </div>
+              )}
+              
               {orderPlaced ? (
                 <div className="bg-green-50 border border-green-200 rounded-lg p-4 text-center">
                   <p className="text-green-700 font-medium">

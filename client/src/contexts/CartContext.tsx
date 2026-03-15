@@ -20,23 +20,40 @@ interface CartContextType {
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
+const STORAGE_KEY = 'brisas_cart_items';
+
 export function CartProvider({ children }: { children: React.ReactNode }) {
-  const [items, setItems] = useState<CartItem[]>([]);
+  const [items, setItems] = useState<CartItem[]>(() => {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      return saved ? JSON.parse(saved) : [];
+    } catch {
+      return [];
+    }
+  });
 
   const addItem = useCallback((item: Omit<CartItem, 'quantity'>) => {
     setItems(prevItems => {
       const existingItem = prevItems.find(i => i.id === item.id);
+      let newItems;
       if (existingItem) {
-        return prevItems.map(i =>
+        newItems = prevItems.map(i =>
           i.id === item.id ? { ...i, quantity: i.quantity + 1 } : i
         );
+      } else {
+        newItems = [...prevItems, { ...item, quantity: 1 }];
       }
-      return [...prevItems, { ...item, quantity: 1 }];
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(newItems));
+      return newItems;
     });
   }, []);
 
   const removeItem = useCallback((id: string) => {
-    setItems(prevItems => prevItems.filter(item => item.id !== id));
+    setItems(prevItems => {
+      const newItems = prevItems.filter(item => item.id !== id);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(newItems));
+      return newItems;
+    });
   }, []);
 
   const updateQuantity = useCallback((id: string, quantity: number) => {
@@ -44,15 +61,18 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
       removeItem(id);
       return;
     }
-    setItems(prevItems =>
-      prevItems.map(item =>
+    setItems(prevItems => {
+      const newItems = prevItems.map(item =>
         item.id === id ? { ...item, quantity } : item
-      )
-    );
+      );
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(newItems));
+      return newItems;
+    });
   }, [removeItem]);
 
   const clearCart = useCallback(() => {
     setItems([]);
+    localStorage.removeItem(STORAGE_KEY);
   }, []);
 
   const totalPrice = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
