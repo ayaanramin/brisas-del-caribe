@@ -1,9 +1,12 @@
 import { useState, useMemo } from 'react';
 import { Button } from '@/components/ui/button';
-import { Search } from 'lucide-react';
+import { Search, ShoppingCart } from 'lucide-react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { WaveDividerTop, WaveDividerBottom, TropicalPattern } from '@/components/CaribbeanDivider';
+import { CartPanel } from '@/components/CartPanel';
+import { useCart } from '@/contexts/CartContext';
+import { toast } from 'sonner';
 
 interface MenuItem {
   id: string;
@@ -11,11 +14,25 @@ interface MenuItem {
   description: string;
   category: string;
   image: string;
+  price: number;
 }
 
 export default function Menu() {
   const [selectedCategory, setSelectedCategory] = useState('featured');
   const [searchQuery, setSearchQuery] = useState('');
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  const { addItem } = useCart();
+
+  const handleAddToOrder = (item: MenuItem) => {
+    addItem({
+      id: item.id,
+      name: item.name,
+      price: item.price,
+    });
+    toast.success(`Added ${item.name} to your order!`, {
+      duration: 2000,
+    });
+  };
 
   const menuItems: MenuItem[] = [
     // Featured Dominican Dishes
@@ -25,6 +42,7 @@ export default function Menu() {
       description: 'Mashed fried plantains with seasoned chicken',
       category: 'featured',
       image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438048923/jHWfQquoZm8oJi86Fq679P/mofongo-dish-Dj5GoEPXZJfuarRg6HCUiu.webp',
+      price: 14.99,
     },
     {
       id: 'pernil-rice-beans',
@@ -32,6 +50,7 @@ export default function Menu() {
       description: 'Slow roasted pork served with Dominican rice and beans',
       category: 'featured',
       image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438048923/jHWfQquoZm8oJi86Fq679P/pernil-dish-PAekvXiWKhU8CnRQa9b3Ym.webp',
+      price: 18.99,
     },
     {
       id: 'arroz-con-pollo',
@@ -39,6 +58,7 @@ export default function Menu() {
       description: 'Seasoned rice cooked with chicken and vegetables',
       category: 'featured',
       image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438048923/jHWfQquoZm8oJi86Fq679P/pollo-guisado-dish-VDZPKDcxsnRC5ZLv2DYkMF.webp',
+      price: 16.99,
     },
     {
       id: 'pollo-al-horno',
@@ -46,6 +66,7 @@ export default function Menu() {
       description: 'Dominican style baked chicken with herbs and spices',
       category: 'featured',
       image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438048923/jHWfQquoZm8oJi86Fq679P/pollo-guisado-dish-VDZPKDcxsnRC5ZLv2DYkMF.webp',
+      price: 15.99,
     },
     {
       id: 'sancocho',
@@ -53,6 +74,7 @@ export default function Menu() {
       description: 'Traditional Dominican meat and vegetable stew',
       category: 'featured',
       image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438048923/jHWfQquoZm8oJi86Fq679P/carne-guisada-dish-GbwpPh7PQPh2UCdDaXSYQB.webp',
+      price: 13.99,
     },
 
     // Appetizers & Sides
@@ -62,6 +84,7 @@ export default function Menu() {
       description: 'Crispy fried turnovers filled with seasoned meat',
       category: 'appetizers',
       image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438048923/jHWfQquoZm8oJi86Fq679P/tostones-dish-XhY2RkCfQ6CYJYQddjeveY.webp',
+      price: 6.99,
     },
     {
       id: 'alcapurrias',
@@ -69,6 +92,7 @@ export default function Menu() {
       description: 'Fried fritters stuffed with savory meat',
       category: 'appetizers',
       image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438048923/jHWfQquoZm8oJi86Fq679P/tostones-dish-XhY2RkCfQ6CYJYQddjeveY.webp',
+      price: 7.99,
     },
     {
       id: 'tostones',
@@ -76,6 +100,7 @@ export default function Menu() {
       description: 'Crispy fried green plantains with garlic mojo sauce',
       category: 'appetizers',
       image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438048923/jHWfQquoZm8oJi86Fq679P/tostones-dish-XhY2RkCfQ6CYJYQddjeveY.webp',
+      price: 7.99,
     },
     {
       id: 'maduros',
@@ -83,6 +108,7 @@ export default function Menu() {
       description: 'Sweet fried ripe plantains',
       category: 'appetizers',
       image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438048923/jHWfQquoZm8oJi86Fq679P/tostones-dish-XhY2RkCfQ6CYJYQddjeveY.webp',
+      price: 5.99,
     },
 
     // Sandwiches
@@ -92,6 +118,7 @@ export default function Menu() {
       description: 'Roast pork, ham, Swiss cheese, pickles, and mustard on pressed bread',
       category: 'sandwiches',
       image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438048923/jHWfQquoZm8oJi86Fq679P/pernil-dish-PAekvXiWKhU8CnRQa9b3Ym.webp',
+      price: 10.99,
     },
     {
       id: 'steak-sandwich',
@@ -99,6 +126,7 @@ export default function Menu() {
       description: 'Seasoned steak with onions on toasted bread',
       category: 'sandwiches',
       image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438048923/jHWfQquoZm8oJi86Fq679P/carne-guisada-dish-GbwpPh7PQPh2UCdDaXSYQB.webp',
+      price: 11.99,
     },
     {
       id: 'ham-cheese-sandwich',
@@ -106,6 +134,7 @@ export default function Menu() {
       description: 'Classic ham and melted cheese on fresh bread',
       category: 'sandwiches',
       image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438048923/jHWfQquoZm8oJi86Fq679P/pernil-dish-PAekvXiWKhU8CnRQa9b3Ym.webp',
+      price: 9.99,
     },
 
     // Salads
@@ -115,6 +144,7 @@ export default function Menu() {
       description: 'Fresh greens with grilled chicken and house dressing',
       category: 'salads',
       image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438048923/jHWfQquoZm8oJi86Fq679P/pollo-guisado-dish-VDZPKDcxsnRC5ZLv2DYkMF.webp',
+      price: 12.99,
     },
     {
       id: 'shrimp-salad',
@@ -122,6 +152,7 @@ export default function Menu() {
       description: 'Succulent shrimp over fresh greens with tangy vinaigrette',
       category: 'salads',
       image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438048923/jHWfQquoZm8oJi86Fq679P/pollo-guisado-dish-VDZPKDcxsnRC5ZLv2DYkMF.webp',
+      price: 14.99,
     },
   ];
 
@@ -147,6 +178,16 @@ export default function Menu() {
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <Navigation />
+      <CartPanel isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
+
+      {/* Floating Cart Button */}
+      <button
+        onClick={() => setIsCartOpen(true)}
+        className="fixed bottom-6 right-6 z-30 bg-primary hover:bg-primary/90 text-white rounded-full p-4 shadow-lg transition-all hover:scale-110"
+        aria-label="Open cart"
+      >
+        <ShoppingCart size={24} />
+      </button>
 
       {/* Hero Section */}
       <section className="relative h-80 md:h-96 flex items-center overflow-hidden bg-gradient-to-r from-primary to-primary/80">
@@ -230,9 +271,15 @@ export default function Menu() {
                       <p className="text-foreground/70 text-sm mb-4">
                         {item.description}
                       </p>
-                      <Button className="w-full bg-primary hover:bg-primary/90 text-white">
-                        Order Now
-                      </Button>
+                      <div className="space-y-3">
+                        <p className="text-2xl font-bold text-primary">${item.price.toFixed(2)}</p>
+                        <Button
+                          onClick={() => handleAddToOrder(item)}
+                          className="w-full bg-primary hover:bg-primary/90 text-white"
+                        >
+                          Add to Order
+                        </Button>
+                      </div>
                     </div>
                   </div>
                 ))}

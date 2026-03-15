@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { Link } from 'wouter';
-import { Menu, X, Phone } from 'lucide-react';
+import { Menu, X, Phone, ShoppingCart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useCart } from '@/contexts/CartContext';
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
+  const { totalItems } = useCart();
 
   const navLinks = [
     { label: 'Home', href: '/' },
@@ -46,23 +48,41 @@ export default function Navigation() {
               Call Now
             </Button>
           </a>
-          <Button size="sm" className="bg-primary hover:bg-primary/80 text-foreground font-bold">
-            Order Online
-          </Button>
+          <div className="relative">
+            <Button size="sm" className="bg-primary hover:bg-primary/80 text-foreground font-bold">
+              <ShoppingCart className="w-4 h-4 mr-2" />
+              Order
+            </Button>
+            {totalItems > 0 && (
+              <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center">
+                {totalItems}
+              </span>
+            )}
+          </div>
         </div>
 
-        {/* Mobile Menu Button */}
-        <button
-          className="md:hidden p-2"
-          onClick={() => setIsOpen(!isOpen)}
-          aria-label="Toggle menu"
-        >
-          {isOpen ? (
-            <X className="w-6 h-6 text-foreground" />
-          ) : (
-            <Menu className="w-6 h-6 text-foreground" />
-          )}
-        </button>
+        {/* Mobile Menu Button and Cart Badge */}
+        <div className="md:hidden flex items-center gap-3">
+          <div className="relative">
+            <ShoppingCart className="w-6 h-6 text-primary cursor-pointer" />
+            {totalItems > 0 && (
+              <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                {totalItems}
+              </span>
+            )}
+          </div>
+          <button
+            className="p-2"
+            onClick={() => setIsOpen(!isOpen)}
+            aria-label="Toggle menu"
+          >
+            {isOpen ? (
+              <X className="w-6 h-6 text-foreground" />
+            ) : (
+              <Menu className="w-6 h-6 text-foreground" />
+            )}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Navigation */}
@@ -86,9 +106,17 @@ export default function Navigation() {
                   Call Now
                 </Button>
               </a>
-              <Button className="w-full bg-primary hover:bg-primary/80 text-foreground font-bold">
-                Order Online
-              </Button>
+              <div className="relative">
+                <Button className="w-full bg-primary hover:bg-primary/80 text-foreground font-bold">
+                  <ShoppingCart className="w-4 h-4 mr-2" />
+                  Order Online
+                </Button>
+                {totalItems > 0 && (
+                  <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center">
+                    {totalItems}
+                  </span>
+                )}
+              </div>
             </div>
           </div>
         </div>
