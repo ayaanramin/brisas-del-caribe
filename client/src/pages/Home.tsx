@@ -5,9 +5,24 @@ import { Star, Phone, MapPin, Clock } from 'lucide-react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { WaveDividerTop, WaveDividerBottom, DoubleWaveDivider, TropicalPattern, CoralPattern } from '@/components/CaribbeanDivider';
+import { useCart } from '@/contexts/CartContext';
+import { toast } from 'sonner';
 
 export default function Home() {
   const [hoveredDish, setHoveredDish] = useState<number | null>(null);
+  const { addItem } = useCart();
+
+  const handleAddToOrder = (dish: { id: number; name: string; price: string }) => {
+    const priceNumber = parseFloat(dish.price.replace('$', ''));
+    addItem({
+      id: `home-dish-${dish.id}`,
+      name: dish.name,
+      price: priceNumber,
+    });
+    toast.success(`Added ${dish.name} to your order!`, {
+      duration: 2000,
+    });
+  };
 
   const featuredDishes = [
     {
@@ -135,7 +150,11 @@ export default function Home() {
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                   />
                   <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <Button size="sm" className="bg-accent hover:bg-accent/90 text-white">
+                    <Button
+                      size="sm"
+                      className="bg-accent hover:bg-accent/90 text-white"
+                      onClick={() => handleAddToOrder(dish)}
+                    >
                       Add to Order
                     </Button>
                   </div>
