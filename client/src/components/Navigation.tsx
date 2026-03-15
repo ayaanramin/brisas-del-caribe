@@ -1,12 +1,11 @@
 import { useState } from 'react';
 import { Link } from 'wouter';
-import { Menu, X, Phone, ShoppingCart } from 'lucide-react';
+import { Menu, X, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { useCart } from '@/contexts/CartContext';
+
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
-  const { totalItems } = useCart();
 
   const navLinks = [
     { label: 'Home', href: '/' },
@@ -42,19 +41,6 @@ export default function Navigation() {
 
         {/* Desktop CTA Buttons */}
         <div className="hidden md:flex items-center gap-3">
-          <Link href="/menu">
-            <div className="relative cursor-pointer">
-              <Button variant="outline" size="sm" className="border-primary text-primary hover:bg-primary hover:text-white font-bold">
-                <ShoppingCart className="w-4 h-4 mr-2" />
-                Cart
-              </Button>
-              {totalItems > 0 && (
-                <span className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold">
-                  {totalItems}
-                </span>
-              )}
-            </div>
-          </Link>
           <a href="tel:+17187949710">
             <Button variant="outline" size="sm" className="border-secondary text-secondary hover:bg-secondary hover:text-white font-bold">
               <Phone className="w-4 h-4 mr-2" />
