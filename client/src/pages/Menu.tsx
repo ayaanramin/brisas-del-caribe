@@ -17,6 +17,7 @@ interface MenuItem {
 export default function Menu() {
   const [selectedCategory, setSelectedCategory] = useState('featured');
   const [searchQuery, setSearchQuery] = useState('');
+  const [clickedItemId, setClickedItemId] = useState<string | null>(null);
 
   const menuItems: MenuItem[] = [
     // Featured Dominican Dishes
@@ -157,8 +158,15 @@ export default function Menu() {
   }, [selectedCategory, searchQuery]);
 
   const handleAddToOrder = (item: MenuItem) => {
+    // Trigger animation
+    setClickedItemId(item.id);
+    setTimeout(() => setClickedItemId(null), 600);
+    
+    // Show enhanced toast
     toast.success(`✓ Added ${item.name} to order!`, {
-      duration: 2000,
+      duration: 3000,
+      description: `$${item.price?.toFixed(2)} - Ready for checkout`,
+      position: 'top-center',
     });
   };
 
@@ -252,7 +260,9 @@ export default function Menu() {
                       </div>
                       <Button
                         onClick={() => handleAddToOrder(item)}
-                        className="w-full bg-primary hover:bg-primary/90 text-white"
+                        className={`w-full bg-primary hover:bg-primary/90 text-white add-to-order-btn ${
+                          clickedItemId === item.id ? 'clicked' : ''
+                        }`}
                       >
                         Add to Order
                       </Button>
