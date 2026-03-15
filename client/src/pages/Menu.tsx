@@ -1,9 +1,11 @@
 import { useState, useMemo } from 'react';
 import { Button } from '@/components/ui/button';
-import { Search } from 'lucide-react';
+import { Search, ShoppingCart } from 'lucide-react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { WaveDividerTop, WaveDividerBottom, TropicalPattern } from '@/components/CaribbeanDivider';
+import { useCart } from '@/contexts/CartContext';
+import { CartModal } from '@/components/CartModal';
 
 interface MenuItem {
   id: string;
@@ -11,11 +13,14 @@ interface MenuItem {
   description: string;
   category: string;
   image: string;
+  price?: number;
 }
 
 export default function Menu() {
   const [selectedCategory, setSelectedCategory] = useState('featured');
   const [searchQuery, setSearchQuery] = useState('');
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  const { addItem, totalItems } = useCart();
 
   const menuItems: MenuItem[] = [
     // Featured Dominican Dishes
@@ -24,6 +29,7 @@ export default function Menu() {
       name: 'Mofongo de Pollo',
       description: 'Mashed fried plantains with seasoned chicken',
       category: 'featured',
+      price: 14.99,
       image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438048923/jHWfQquoZm8oJi86Fq679P/mofongo-dish-Dj5GoEPXZJfuarRg6HCUiu.webp',
     },
     {
@@ -31,6 +37,7 @@ export default function Menu() {
       name: 'Pernil with Rice & Beans',
       description: 'Slow roasted pork served with Dominican rice and beans',
       category: 'featured',
+      price: 18.99,
       image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438048923/jHWfQquoZm8oJi86Fq679P/pernil-dish-PAekvXiWKhU8CnRQa9b3Ym.webp',
     },
     {
@@ -38,6 +45,7 @@ export default function Menu() {
       name: 'Arroz con Pollo',
       description: 'Seasoned rice cooked with chicken and vegetables',
       category: 'featured',
+      price: 13.99,
       image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438048923/jHWfQquoZm8oJi86Fq679P/pollo-guisado-dish-VDZPKDcxsnRC5ZLv2DYkMF.webp',
     },
     {
@@ -45,6 +53,7 @@ export default function Menu() {
       name: 'Pollo al Horno',
       description: 'Dominican style baked chicken with herbs and spices',
       category: 'featured',
+      price: 12.99,
       image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438048923/jHWfQquoZm8oJi86Fq679P/pollo-guisado-dish-VDZPKDcxsnRC5ZLv2DYkMF.webp',
     },
     {
@@ -52,6 +61,7 @@ export default function Menu() {
       name: 'Sancocho',
       description: 'Traditional Dominican meat and vegetable stew',
       category: 'featured',
+      price: 11.99,
       image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438048923/jHWfQquoZm8oJi86Fq679P/carne-guisada-dish-GbwpPh7PQPh2UCdDaXSYQB.webp',
     },
 
@@ -61,6 +71,7 @@ export default function Menu() {
       name: 'Empanadas',
       description: 'Crispy fried turnovers filled with seasoned meat',
       category: 'appetizers',
+      price: 6.99,
       image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438048923/jHWfQquoZm8oJi86Fq679P/tostones-dish-XhY2RkCfQ6CYJYQddjeveY.webp',
     },
     {
@@ -68,6 +79,7 @@ export default function Menu() {
       name: 'Alcapurrias',
       description: 'Fried fritters stuffed with savory meat',
       category: 'appetizers',
+      price: 7.99,
       image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438048923/jHWfQquoZm8oJi86Fq679P/tostones-dish-XhY2RkCfQ6CYJYQddjeveY.webp',
     },
     {
@@ -75,6 +87,7 @@ export default function Menu() {
       name: 'Tostones',
       description: 'Crispy fried green plantains with garlic mojo sauce',
       category: 'appetizers',
+      price: 5.99,
       image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438048923/jHWfQquoZm8oJi86Fq679P/tostones-dish-XhY2RkCfQ6CYJYQddjeveY.webp',
     },
     {
@@ -82,6 +95,7 @@ export default function Menu() {
       name: 'Maduros',
       description: 'Sweet fried ripe plantains',
       category: 'appetizers',
+      price: 4.99,
       image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438048923/jHWfQquoZm8oJi86Fq679P/tostones-dish-XhY2RkCfQ6CYJYQddjeveY.webp',
     },
 
@@ -91,6 +105,7 @@ export default function Menu() {
       name: 'Cuban Sandwich',
       description: 'Roast pork, ham, Swiss cheese, pickles, and mustard on pressed bread',
       category: 'sandwiches',
+      price: 9.99,
       image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438048923/jHWfQquoZm8oJi86Fq679P/pernil-dish-PAekvXiWKhU8CnRQa9b3Ym.webp',
     },
     {
@@ -98,6 +113,7 @@ export default function Menu() {
       name: 'Steak Sandwich (Sandwich de Bistec)',
       description: 'Seasoned steak with onions on toasted bread',
       category: 'sandwiches',
+      price: 10.99,
       image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438048923/jHWfQquoZm8oJi86Fq679P/carne-guisada-dish-GbwpPh7PQPh2UCdDaXSYQB.webp',
     },
     {
@@ -105,6 +121,7 @@ export default function Menu() {
       name: 'Ham & Cheese Sandwich',
       description: 'Classic ham and melted cheese on fresh bread',
       category: 'sandwiches',
+      price: 7.99,
       image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438048923/jHWfQquoZm8oJi86Fq679P/pernil-dish-PAekvXiWKhU8CnRQa9b3Ym.webp',
     },
 
@@ -114,6 +131,7 @@ export default function Menu() {
       name: 'Grilled Chicken Salad',
       description: 'Fresh greens with grilled chicken and house dressing',
       category: 'salads',
+      price: 10.99,
       image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438048923/jHWfQquoZm8oJi86Fq679P/pollo-guisado-dish-VDZPKDcxsnRC5ZLv2DYkMF.webp',
     },
     {
@@ -121,6 +139,7 @@ export default function Menu() {
       name: 'Shrimp Salad with Vinaigrette',
       description: 'Succulent shrimp over fresh greens with tangy vinaigrette',
       category: 'salads',
+      price: 12.99,
       image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663438048923/jHWfQquoZm8oJi86Fq679P/pollo-guisado-dish-VDZPKDcxsnRC5ZLv2DYkMF.webp',
     },
   ];
@@ -147,6 +166,23 @@ export default function Menu() {
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <Navigation />
+      
+      {/* Cart Button */}
+      <div className="fixed bottom-6 right-6 z-40">
+        <button
+          onClick={() => setIsCartOpen(true)}
+          className="relative bg-primary hover:bg-primary/90 text-white rounded-full p-4 shadow-lg transition-all hover:scale-110"
+        >
+          <ShoppingCart className="w-6 h-6" />
+          {totalItems > 0 && (
+            <span className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold">
+              {totalItems}
+            </span>
+          )}
+        </button>
+      </div>
+      
+      <CartModal isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
 
       {/* Hero Section */}
       <section className="relative h-80 md:h-96 flex items-center overflow-hidden bg-gradient-to-r from-primary to-primary/80">
@@ -230,8 +266,23 @@ export default function Menu() {
                       <p className="text-foreground/70 text-sm mb-4">
                         {item.description}
                       </p>
-                      <Button className="w-full bg-primary hover:bg-primary/90 text-white">
-                        Order Now
+                      <div className="flex items-center justify-between mb-4">
+                        <span className="text-2xl font-bold text-primary">${item.price?.toFixed(2)}</span>
+                      </div>
+                      <Button
+                        onClick={() => {
+                          if (item.price) {
+                            addItem({
+                              id: item.id,
+                              name: item.name,
+                              price: item.price,
+                              description: item.description,
+                            });
+                          }
+                        }}
+                        className="w-full bg-primary hover:bg-primary/90 text-white"
+                      >
+                        Add to Order
                       </Button>
                     </div>
                   </div>
