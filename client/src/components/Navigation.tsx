@@ -3,10 +3,12 @@ import { Link } from 'wouter';
 import { Menu, X, Phone, ShoppingCart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useCart } from '@/contexts/CartContext';
+import { useCartPanel } from '@/App';
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const { totalItems } = useCart();
+  const { setIsOpen: setCartOpen } = useCartPanel();
 
   const navLinks = [
     { label: 'Home', href: '/' },
@@ -49,7 +51,11 @@ export default function Navigation() {
             </Button>
           </a>
           <div className="relative">
-            <Button size="sm" className="bg-primary hover:bg-primary/80 text-foreground font-bold">
+            <Button
+              size="sm"
+              onClick={() => setCartOpen(true)}
+              className="bg-primary hover:bg-primary/80 text-foreground font-bold"
+            >
               <ShoppingCart className="w-4 h-4 mr-2" />
               Order
             </Button>
@@ -63,14 +69,18 @@ export default function Navigation() {
 
         {/* Mobile Menu Button and Cart Badge */}
         <div className="md:hidden flex items-center gap-3">
-          <div className="relative">
-            <ShoppingCart className="w-6 h-6 text-primary cursor-pointer" />
+          <button
+            onClick={() => setCartOpen(true)}
+            className="relative p-0 bg-transparent border-none cursor-pointer"
+            aria-label="Open cart"
+          >
+            <ShoppingCart className="w-6 h-6 text-primary" />
             {totalItems > 0 && (
               <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
                 {totalItems}
               </span>
             )}
-          </div>
+          </button>
           <button
             className="p-2"
             onClick={() => setIsOpen(!isOpen)}
@@ -107,7 +117,13 @@ export default function Navigation() {
                 </Button>
               </a>
               <div className="relative">
-                <Button className="w-full bg-primary hover:bg-primary/80 text-foreground font-bold">
+                <Button
+                  onClick={() => {
+                    setCartOpen(true);
+                    setIsOpen(false);
+                  }}
+                  className="w-full bg-primary hover:bg-primary/80 text-foreground font-bold"
+                >
                   <ShoppingCart className="w-4 h-4 mr-2" />
                   Order Online
                 </Button>

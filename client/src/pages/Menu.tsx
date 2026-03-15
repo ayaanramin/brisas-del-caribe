@@ -6,6 +6,7 @@ import Footer from '@/components/Footer';
 import { WaveDividerTop, WaveDividerBottom, TropicalPattern } from '@/components/CaribbeanDivider';
 import { CartPanel } from '@/components/CartPanel';
 import { useCart } from '@/contexts/CartContext';
+import { useCartPanel } from '@/App';
 import { toast } from 'sonner';
 
 interface MenuItem {
@@ -22,6 +23,7 @@ export default function Menu() {
   const [searchQuery, setSearchQuery] = useState('');
   const [isCartOpen, setIsCartOpen] = useState(false);
   const { addItem } = useCart();
+  const { setIsOpen: setCartOpen } = useCartPanel();
 
   const handleAddToOrder = (item: MenuItem) => {
     addItem({
@@ -315,7 +317,11 @@ export default function Menu() {
               Order online for pickup or delivery, or call us to place your order. We also offer catering for special events.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-primary hover:bg-primary/90 text-white">
+              <Button
+                size="lg"
+                onClick={() => setCartOpen(true)}
+                className="bg-primary hover:bg-primary/90 text-white"
+              >
                 Order Online
               </Button>
               <a href="tel:+17187949710">

@@ -6,11 +6,13 @@ import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { WaveDividerTop, WaveDividerBottom, DoubleWaveDivider, TropicalPattern, CoralPattern } from '@/components/CaribbeanDivider';
 import { useCart } from '@/contexts/CartContext';
+import { useCartPanel } from '@/App';
 import { toast } from 'sonner';
 
 export default function Home() {
   const [hoveredDish, setHoveredDish] = useState<number | null>(null);
   const { addItem } = useCart();
+  const { setIsOpen: setCartOpen } = useCartPanel();
 
   const handleAddToOrder = (dish: { id: number; name: string; price: string }) => {
     const priceNumber = parseFloat(dish.price.replace('$', ''));
@@ -107,7 +109,12 @@ export default function Home() {
                   View Menu
                 </Button>
               </Link>
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-primary font-bold w-full sm:w-auto">
+              <Button
+                size="lg"
+                onClick={() => setCartOpen(true)}
+                variant="outline"
+                className="border-white text-white hover:bg-white hover:text-primary font-bold w-full sm:w-auto"
+              >
                 Order Online
               </Button>
               <a href="tel:+17187949710" className="w-full sm:w-auto">
