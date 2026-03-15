@@ -7,6 +7,8 @@ export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
 
   const navLinks = [
+    { label: 'Home', href: '/' },
+    { label: 'About', href: '/about' },
     { label: 'Menu', href: '/menu' },
     { label: 'Catering', href: '/catering' },
     { label: 'Gallery', href: '/gallery' },
@@ -14,12 +16,12 @@ export default function Navigation() {
   ];
 
   return (
-    <nav className="sticky top-0 z-50 bg-white shadow-md border-b-2 border-primary">
+    <nav className="sticky top-0 z-50 bg-white shadow-lg border-b-4 border-primary">
       <div className="container flex items-center justify-between py-4">
         {/* Logo */}
         <Link href="/">
           <div className="flex items-center gap-2 cursor-pointer">
-            <div className="text-xl font-bold display-text text-primary">
+            <div className="text-2xl font-bold display-text text-primary">
               Brisas del Caribe
             </div>
           </div>
