@@ -59,18 +59,23 @@ export default function Home() {
 
   const testimonials = [
     {
-      name: 'Maria Rodriguez',
-      text: 'The best mofongo in the Bronx! Authentic flavors that remind me of home. We come here every weekend.',
+      name: 'Toby Buonagurio',
+      text: 'Oh, if you love fresh, tasty Caribbean food this is a gem (my favorite is roasted pernil). I have been either picking up or ordering them for at least 10 years.',
       rating: 5,
     },
     {
-      name: 'James Chen',
-      text: 'Incredible food and such a warm, welcoming atmosphere. The staff treats you like family. Highly recommend!',
+      name: 'Gigi!!',
+      text: 'The mofongo here is SO GOOD!! The food in general was amazing. The food came at a reasonable time. However, the mofongo is a must. Its the best I\'ve ever had.',
       rating: 5,
     },
     {
-      name: 'Sofia Mendez',
-      text: 'We ordered catering for our daughter\'s quinceañera and it was perfect. Fresh, delicious, and beautifully presented.',
+      name: 'Vanessa Gonzalez',
+      text: 'The food is straight fire. If you want real, home‑cooked Dominican food, pull up to Brisas del Caribe. We ordered catering (rice, beans, pernil) for Noche Buena, and everything was amazing.',
+      rating: 5,
+    },
+    {
+      name: 'Edward Jimenez',
+      text: 'I can\'t say enough about Brisas. It is, hands down, the best Dominican restaurant in all of New York! From the moment you walk in, the warm, welcoming atmosphere makes you feel like you\'re about to enjoy a meal at a close friend\'s home.',
       rating: 5,
     },
   ];
