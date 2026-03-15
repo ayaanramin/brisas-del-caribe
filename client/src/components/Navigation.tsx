@@ -3,7 +3,6 @@ import { Link } from 'wouter';
 import { Menu, X, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
-
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
 
